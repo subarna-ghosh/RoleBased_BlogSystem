@@ -3,23 +3,31 @@ const Schema = mongoose.Schema;
 
 const blogSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
-      required: true,
     },
-    email: {
+    content: {
       type: String,
-      required: true,
     },
-    password: {
+    status: {
       type: String,
-      required: true,
+      enum: ["draft", "published"],
+      default: "draft",
     },
-    role: {
+    blogImage: {
       type: String,
-      enum: ["admin", "author", "user"],
-      default: "user",
+      default:
+        "https://img.magnific.com/premium-vector/cute-book-herbarium-journal-literature-world-book-day-vector-illustration-flat-style_254685-2882.jpg?semt=ais_hybrid&w=740&q=80",
     },
+    imageBlogPublicId: {
+      type: String,
+      default: null,
+    },
+    isDeleted:{
+      type:Boolean,
+      default:false
+    },
+
   },
   {
     timestamps: true,
