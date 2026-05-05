@@ -3,7 +3,9 @@ const Router=express()
 const UserController=require('../controller/UserController')
 const authCheck=require('../middleware/authCheck')
 const uploadImage=require('../utils/uploadImage')
+const checkRoles=require('../middleware/allowRoles')
 
+// user access
 Router.post('/user/register',uploadImage.single('profileImage'),UserController.register)
 Router.post('/user/login',UserController.login)
 

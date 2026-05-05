@@ -89,7 +89,7 @@ class UserController {
           id: isPresent._id,
           name: isPresent.name,
           email: isPresent.email,
-          phone: profileImage.phone,
+          phone: isPresent.phone,
           role: isPresent.role,
           image: isPresent.profileImage,
         },
