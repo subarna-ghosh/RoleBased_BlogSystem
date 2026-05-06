@@ -23,11 +23,13 @@ const blogSchema = new Schema(
       type: String,
       default: null,
     },
-    isDeleted:{
-      type:Boolean,
-      default:false
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
-
+    createdBy: {
+      type: String,
+    },
   },
   {
     timestamps: true,

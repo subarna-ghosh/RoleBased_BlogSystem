@@ -5,8 +5,9 @@ const authCheck=require('../middleware/authCheck')
 const uploadImage=require('../utils/uploadImage')
 const checkRoles=require('../middleware/allowRoles')
 
-// user access
+// user register
 Router.post('/user/register',uploadImage.single('profileImage'),UserController.register)
+// user login
 Router.post('/user/login',UserController.login)
 
 module.exports=Router
