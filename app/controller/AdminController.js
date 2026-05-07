@@ -43,7 +43,23 @@ class AdminController {
   async hardDeleteBlog(req, res) {
     try {
       const id = req.params.id;
+      const userDel=await BModel.findById(id)
+      if(!userDel)
+      {
+        return res.status(400).json({
+          success:false,
+          message:"user data does not exist!"
+        })
+      }
+      if(userDel.imageBlogPublicId)
+      {
+        //delete image from cloudinary
+        await cloudinary.uploader.destroy(userDel.imageBlogPublicId)
+      }
+
+       //delete blog from DB
       const delBlog = await BModel.findByIdAndDelete(id);
+      
       return res.status(200).json({
         success: true,
         message: "Blog deleted successfully!",

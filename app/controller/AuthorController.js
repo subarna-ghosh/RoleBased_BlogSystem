@@ -4,7 +4,7 @@ const fs = require("fs").promises;
 class AuthorController {
   async createBlog(req, res) {
     try {
-      console.log(req.body);
+      // console.log(req.body);
       const { title, content } = req.body;
       if (!title || !content) {
         return res.status(400).json({
@@ -13,10 +13,10 @@ class AuthorController {
         });
       }
 
-      const buildBlog = new BModel({
+      let buildBlog = new BModel({
         title,
         content,
-        createdBy: req.user._id,
+        isCreatedBy: req.user.id,
       });
 
       console.log(req.file);

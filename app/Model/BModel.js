@@ -27,7 +27,7 @@ const blogSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    createdBy: {
+    isCreatedBy: {
       type: String,
     },
   },

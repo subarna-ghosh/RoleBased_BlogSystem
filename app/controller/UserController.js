@@ -1,4 +1,5 @@
 const User = require("../Model/UModel");
+const Blog = require("../Model/BModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const cloudinary = require("../config/cloudinary");
@@ -100,6 +101,23 @@ class UserController {
         success: true,
         message: "token generated successfully!",
         token,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        message: err.message,
+      });
+    }
+  }
+
+  async viewBlogs(req, res) {
+    try {
+      const data = await Blog.find({ status: "published" });
+      return res.status(200).json({
+        success: true,
+        message: "Published blogs!",
+        count: data.length,
+        data,
       });
     } catch (err) {
       return res.status(500).json({

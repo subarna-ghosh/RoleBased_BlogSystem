@@ -9,5 +9,7 @@ const checkRoles=require('../middleware/allowRoles')
 Router.post('/user/register',uploadImage.single('profileImage'),UserController.register)
 // user login
 Router.post('/user/login',UserController.login)
+// view published blogs
+Router.get('/user/view',authCheck,checkRoles("user"),UserController.viewBlogs)
 
 module.exports=Router
